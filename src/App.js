@@ -1,13 +1,15 @@
-import React, { Fragment } from "react";
+import React from "react";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 import "./App.scss";
 
 import Home from "./pages/Home";
 
 function App() {
   return (
-    <Fragment>
+    <Provider store={store}>
       <Home />
-    </Fragment>
+    </Provider>
   );
 }
 
