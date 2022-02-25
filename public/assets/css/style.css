@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* .e-logo {
+    width: 160px;
+    height: 60px;
+  } */
+
+.user {
+  background: #fff;
+  font-size: 30px;
+}
+
+.nav-edit {
+  width: 40%;
+  text-transform: uppercase;
+  margin: auto;
+  color: #2885ca;
+}
+
+.nav-edit a {
+  text-decoration: none;
+}
+
+.active-link {
+  border-bottom: 2px solid #bc1f27;
+}
+
+.slider-section {
+  height: 560px;
+}
+
+.bx {
+  box-shadow: 2px 2px 18px #aaaaaa;
+}
+
+.hot-sale {
+  background-color: #bc1f27;
+  color: #fff;
+  height: 50px;
+}
+
+.about-card {
+  padding: 0.5rem 0.5rem !important;
+}
+.card-s {
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.c-hover:hover {
+  cursor: pointer;
+  background: #ffffff;
+  border: 5px solid #2885ca;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+    20px 20px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.hot-sale {
+  border-radius: 10px 0 0 0;
+  color: #fff;
+  font-weight: bolder;
+}
+
+.best-seller {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.best-seller label {
+  border-radius: 0 0 0 10px;
+  color: #fff;
+  font-weight: bolder;
+  padding: 0.3rem;
+}
+
+.c-best-seller {
+  border: 3px solid #bc1f27;
+}
+
+/* table */
+
+.table-head {
+  background: #e5e5e5;
+}
+
+.edit-btn,
+.del-btn {
+  padding: 5px 15px !important;
+  margin: 0;
+  font-size: 12px;
+}
+
+.xy-1 {
+  text-align: end;
+}
