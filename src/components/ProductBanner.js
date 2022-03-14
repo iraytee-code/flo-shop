@@ -1,7 +1,25 @@
 import React, { Fragment } from "react";
 import banner from "../assets/images/Slider1.png";
+// import Skeleton from "react-loading-skeleton";
 
-const ProductBanner = () => {
+const ProductBanner = ({ products }) => {
+  //variable to return all products with an hotsale equivalent of 1
+  const hotsaleProduct = products.filter((item) => item.hotSale === 1);
+  // .slice(0, 3);
+  //console.log("hotsaleProduct:", hotsaleProduct);  returning the hotsale products in the console
+  //to get three random hot sale products from the whole hotsale product gotten from the backend
+  const randomHotSale = (ar, size) => {
+    //spread what i have in hotsaleProduct into a new array
+    let newArray = [...ar];
+    newArray.splice(Math.floor(Math.random() * ar.length), 1);
+    return ar.length <= size + 1 ? newArray : randomHotSale(newArray, size);
+  };
+
+  console.log("new random:", randomHotSale(hotsaleProduct, 3));
+
+  const randomResult = randomHotSale(hotsaleProduct, 3);
+
+  // console.log("randomResult:", randomResult, typeof randomResult);
   return (
     <Fragment>
       <section className="hero-section">
@@ -24,54 +42,28 @@ const ProductBanner = () => {
             <div className="col-lg-6 col-md-6 p-0">
               <h4 className="bg-danger px-3 py-2 hot-sale">HOT SALE!!!</h4>
               <div className="row">
-                <div className="col-lg-4 col-md-4">
-                  <div className="card">
-                    <div
-                      className="card-body about-card"
-                      style={{ padding: "0.5rem 0.5rem" }}
-                    >
-                      <img
-                        src="./assets/images/1.png"
-                        className="card-img-top"
-                        alt="one"
-                      />
-                      <p className="card-text">Schweppes 33CL Bitter...</p>
-                      <p className="card-text fw-bolder">N 2,900</p>
+                {randomResult.map((item, index) => (
+                  <div className="col-lg-4 col-md-4" key={index}>
+                    <div className="card">
+                      <div
+                        className="card-body about-card"
+                        style={{ padding: "0.5rem 0.5rem" }}
+                      >
+                        <img
+                          src={item.productImageUrl}
+                          width={80}
+                          height={150}
+                          className="card-img-top"
+                          alt="product image currently not available, please contact your dealer"
+                        />
+                        <p className="card-text">{item.productName}</p>
+                        <p className="card-text fw-bolder">
+                          N{item.productPrice}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="col-lg-4 col-md-4">
-                  <div className="card">
-                    <div
-                      className="card-body about-card"
-                      style={{ padding: "0.5rem 0.5rem" }}
-                    >
-                      <img
-                        src="./assets/images/2.png"
-                        className="card-img-top"
-                        alt="one"
-                      />
-                      <p className="card-text">Schweppes 33CL Bitter...</p>
-                      <p className="card-text fw-bolder">N 2,900</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-md-4">
-                  <div className="card">
-                    <div
-                      className="card-body about-card"
-                      style={{ padding: "0.5rem 0.5rem" }}
-                    >
-                      <img
-                        src="./assets/images/3.png"
-                        className="card-img-top"
-                        alt="one"
-                      />
-                      <p className="card-text">Schweppes 33CL Bitter...</p>
-                      <p className="card-text fw-bolder">N 2,900</p>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>

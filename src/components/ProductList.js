@@ -1,6 +1,8 @@
 import React from "react";
 
-const ProductList = () => {
+const ProductList = ({ products }) => {
+  const listProduct = products;
+  // console.log("list products:", listProduct);
   return (
     <>
       <hr />
@@ -13,177 +15,40 @@ const ProductList = () => {
           </div>
         </div>
         <hr />
-        <div className>
-          <div className="row my-4">
-            <div
-              className="col-lg-3 col-md-3 p-3"
-              data-bs-toggle="modal"
-              data-bs-target="#product-details-modal"
-            >
-              <div className="card c-hover">
-                <div
-                  className="card-body about-card"
-                  style={{ padding: "0.5rem 0.5rem" }}
-                >
-                  <img
-                    src="./assets/images/a.png"
-                    className="card-img-top"
-                    alt="one"
-                  />
-                  <p className="card-text">Schweppes 33CL Bitter...</p>
-                  <p className="card-text fw-bolder">N 2,900</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-md-3 p-3"
-              data-bs-toggle="modal"
-              data-bs-target="#product-details-modal"
-            >
-              <div className="card c-hover">
-                <div
-                  className="card-body about-card"
-                  style={{ padding: "0.5rem 0.5rem" }}
-                >
-                  <img
-                    src="./assets/images/b.png"
-                    className="card-img-top"
-                    alt="one"
-                  />
-                  <p className="card-text">Schweppes 33CL Bitter...</p>
-                  <p className="card-text fw-bolder">N 2,900</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-md-3 p-3"
-              data-bs-toggle="modal"
-              data-bs-target="#product-details-modal"
-            >
-              <div className="card c-hover">
-                <div
-                  className="card-body about-card"
-                  style={{ padding: "0.5rem 0.5rem" }}
-                >
-                  <img
-                    src="./assets/images/c.png"
-                    className="card-img-top"
-                    alt="one"
-                  />
-                  <p className="card-text">Schweppes 33CL Bitter...</p>
-                  <p className="card-text fw-bolder">N 2,900</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-md-3 p-3"
-              data-bs-toggle="modal"
-              data-bs-target="#product-details-modal"
-            >
-              <div className="card c-hover c-best-seller">
-                <div className="best-seller ">
-                  <label className="bg-danger">BEST SELLER</label>
-                </div>
-                <div
-                  className="card-body about-card "
-                  style={{ padding: "0.5rem 0.5rem" }}
-                >
-                  <img
-                    src="./assets/images/d.png"
-                    className="card-img-top"
-                    alt="one"
-                  />
-                  <p className="card-text">Schweppes 33CL Bitter...</p>
-                  <p className="card-text fw-bolder">N 2,900</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row my-4">
-            <div
-              className="col-lg-3 col-md-3 p-3"
-              data-bs-toggle="modal"
-              data-bs-target="#product-details-modal"
-            >
-              <div className="card c-hover">
-                <div
-                  className="card-body about-card"
-                  style={{ padding: "0.5rem 0.5rem" }}
-                >
-                  <img
-                    src="./assets/images/e.png"
-                    className="card-img-top"
-                    alt="one"
-                  />
-                  <p className="card-text">Schweppes 33CL Bitter...</p>
-                  <p className="card-text fw-bolder">N 2,900</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-md- p-3"
-              data-bs-toggle="modal"
-              data-bs-target="#product-details-modal"
-            >
-              <div className="card c-hover">
-                <div
-                  className="card-body about-card"
-                  style={{ padding: "0.5rem 0.5rem" }}
-                >
-                  <img
-                    src="./assets/images/f.png"
-                    className="card-img-top"
-                    alt="one"
-                  />
-                  <p className="card-text">Schweppes 33CL Bitter...</p>
-                  <p className="card-text fw-bolder">N 2,900</p>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-md-3 p-3"
-              data-bs-toggle="modal"
-              data-bs-target="#product-details-modal"
-            >
-              <div className="card c-hover card-s">
-                <div
-                  className="card-body about-card c-best-seller"
-                  style={{ padding: "0.5rem 0.5rem" }}
-                >
-                  <div className="best-seller ">
-                    <label className="bg-danger">BEST SELLER</label>
+        <div className="row my-4">
+          {listProduct.map((item, index) => {
+            return (
+              <div
+                className="col-lg-3 col-md-3 p-3"
+                data-bs-toggle="modal"
+                data-bs-target="#product-details-modal"
+                key={index}
+              >
+                <div className="card c-hover">
+                  <div
+                    className="card-body about-card"
+                    style={{ padding: "0.5rem 0.5rem" }}
+                  >
+                    {/* show best seller  */}
+                    {item.bestSeller === true ? (
+                      <div className="best-seller">
+                        <label className="bg-danger">BEST SELLER</label>
+                      </div>
+                    ) : null}
+                    <img
+                      src={item.productImageUrl}
+                      className="card-img-top"
+                      alt="product image currently not available, please contact your dealer"
+                      width={100}
+                      height={250}
+                    />
+                    <p className="card-text">{item.productName}</p>
+                    <p className="card-text fw-bolder">N {item.productPrice}</p>
                   </div>
-                  <img
-                    src="./assets/images/g.png"
-                    className="card-img-top"
-                    alt="one"
-                  />
-                  <p className="card-text">Schweppes 33CL Bitter...</p>
-                  <p className="card-text fw-bolder">N 2,900</p>
                 </div>
               </div>
-            </div>
-            <div
-              className="col-lg-3 col-md-3 p-3"
-              data-bs-toggle="modal"
-              data-bs-target="#product-details-modal"
-            >
-              <div className="card c-hover">
-                <div
-                  className="card-body about-card"
-                  style={{ padding: "0.5rem 0.5rem" }}
-                >
-                  <img
-                    src="./assets/images/h.png"
-                    className="card-img-top"
-                    alt="one"
-                  />
-                  <p className="card-text">Schweppes 33CL Bitter...</p>
-                  <p className="card-text fw-bolder">N 2,900</p>
-                </div>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </section>
     </>
