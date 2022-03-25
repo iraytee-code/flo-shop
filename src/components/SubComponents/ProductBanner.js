@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import banner from "../assets/images/Slider1.png";
+import banner from "../../assets/images/Slider1.png";
 // import Skeleton from "react-loading-skeleton";
 
 const ProductBanner = ({ products }) => {
@@ -54,7 +54,7 @@ const ProductBanner = ({ products }) => {
                           width={80}
                           height={150}
                           className="card-img-top"
-                          alt="product image currently not available, please contact your dealer"
+                          alt="productImage currently not available, please contact your dealer"
                         />
                         <p className="card-text">{item.productName}</p>
                         <p className="card-text fw-bolder">

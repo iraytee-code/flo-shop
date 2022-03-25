@@ -1,7 +1,7 @@
 import React from "react";
 
-const ProductList = ({ products }) => {
-  const listProduct = products;
+const ProductList = ({ products:listProduct }) => {
+  
   // console.log("list products:", listProduct);
   return (
     <>
@@ -30,15 +30,15 @@ const ProductList = ({ products }) => {
                     style={{ padding: "0.5rem 0.5rem" }}
                   >
                     {/* show best seller  */}
-                    {item.bestSeller === true ? (
+                    {item.bestSeller && (
                       <div className="best-seller">
                         <label className="bg-danger">BEST SELLER</label>
                       </div>
-                    ) : null}
+                    )}
                     <img
                       src={item.productImageUrl}
                       className="card-img-top"
-                      alt="product image currently not available, please contact your dealer"
+                      alt="product currently not available, please contact your dealer"
                       width={100}
                       height={250}
                     />
