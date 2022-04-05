@@ -1,24 +1,20 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import LoginModal from "./LoginModal";
+import React from "react";
 import etz_logo from "../../assets/images/Etranzact_Logo.png";
-import RegisterModal from "./RegisterModal";
+import {Link} from "react-router-dom";
+import LoginModal from "./LoginModal"
+import RegisterModal from "./RegisterModal"
+import useModal from "../../hooks/useModal"
+
 
 const NavBar = () => {
-  // LOGIN 
-  const [showLogin, setShowLogin] = useState(false);
-  const handleLoginOpen = () => setShowLogin(true);
-  const handleLoginCLose = () => setShowLogin(false);
-  // Registration
-  const [showRegister, setShowRegister] = useState(false);
-  const handleRegisterOpen = ()=> setShowRegister(true);
-  const handleRegisterClose = ()=> setShowRegister(false);
-  return (
-    <React.Fragment>
+const {showLogin, showRegister, handleLoginOpen, handleLoginClose, handleRegisterOpen, handleRegisterClose} = useModal()
+ 
+ return (
+    <>
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand">
-            <img src={etz_logo} alt="" width={200} height={24} />
+          <Link className="navbar-brand" to="/">
+            <img src={etz_logo} alt="etz-logo" width={200} height={24} />
           </Link>
           <button
             className="navbar-toggler"
@@ -40,7 +36,8 @@ const NavBar = () => {
               LOGIN
             </button>
             <button
-              className="btn btn-primary ms-5" onClick={handleRegisterOpen}
+              className="btn btn-primary ms-5"
+              onClick={handleRegisterOpen}
             >
               REGISTER
             </button>
@@ -48,15 +45,9 @@ const NavBar = () => {
         </div>
       </nav>
       <hr />
-      {/* Login Modal */}
-      <LoginModal 
-      show={showLogin}
-      handleCLose={handleLoginCLose}
-      />
-      {/* Register Modal */}
-      <RegisterModal show={showRegister} handleCLose={handleRegisterClose}/>
-
-    </React.Fragment>
+     {showLogin &&  <LoginModal {...{showLogin, handleLoginClose}}/>}
+     {showRegister &&  <RegisterModal {...{showRegister, handleRegisterClose}}/>}
+    </>
   );
 };
 

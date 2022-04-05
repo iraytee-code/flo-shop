@@ -1,29 +1,23 @@
 import React, { Fragment } from "react";
-import banner from "../../assets/images/Slider1.png";
-// import Skeleton from "react-loading-skeleton";
+import _ from "lodash";
+// import Skeleton from 'react-loading-skeleton'
 
 const ProductBanner = ({ products }) => {
-  //variable to return all products with an hotsale equivalent of 1
-  const hotsaleProduct = products.filter((item) => item.hotSale === 1);
-  // .slice(0, 3);
-  //console.log("hotsaleProduct:", hotsaleProduct);  returning the hotsale products in the console
-  //to get three random hot sale products from the whole hotsale product gotten from the backend
-  const randomHotSale = (ar, size) => {
-    //spread what i have in hotsaleProduct into a new array
-    let newArray = [...ar];
-    newArray.splice(Math.floor(Math.random() * ar.length), 1);
-    return ar.length <= size + 1 ? newArray : randomHotSale(newArray, size);
-  };
-
-  console.log("new random:", randomHotSale(hotsaleProduct, 3));
-
-  const randomResult = randomHotSale(hotsaleProduct, 3);
-
-  // console.log("randomResult:", randomResult, typeof randomResult);
+  let hotSaleProducts = products.filter((item) => item.hotSale === 1);
+  // let randomHotSaleProducts = hotSaleProducts
+  //   .sort(() => Math.random() - Math.random())
+  //   .slice(0, 3);
+  let randomHotSaleProducts = _.sampleSize(hotSaleProducts, 3);
+  console.log("randomProducts", randomHotSaleProducts);
+  console.log("hotsalesprod", hotSaleProducts);
   return (
     <Fragment>
       <section className="hero-section">
-        <img src={banner} alt="slider" className="img-fluid" />
+        <img
+          src="./assets/images/Slider1.png"
+          alt="slider"
+          className="img-fluid"
+        />
       </section>
       <section className="about-section">
         <div className="container">
@@ -42,8 +36,8 @@ const ProductBanner = ({ products }) => {
             <div className="col-lg-6 col-md-6 p-0">
               <h4 className="bg-danger px-3 py-2 hot-sale">HOT SALE!!!</h4>
               <div className="row">
-                {randomResult.map((item, index) => (
-                  <div className="col-lg-4 col-md-4" key={index}>
+                {randomHotSaleProducts.map((item) => (
+                  <div className="col-lg-4 col-md-4" key={item._id}>
                     <div className="card">
                       <div
                         className="card-body about-card"
@@ -51,14 +45,14 @@ const ProductBanner = ({ products }) => {
                       >
                         <img
                           src={item.productImageUrl}
+                          className="card-img-top"
+                          alt="one"
                           width={80}
                           height={150}
-                          className="card-img-top"
-                          alt="productImage currently not available, please contact your dealer"
                         />
-                        <p className="card-text">{item.productName}</p>
+                        <p className="card-text">{item.ProductName}</p>
                         <p className="card-text fw-bolder">
-                          N{item.productPrice}
+                          {item.productPrice}
                         </p>
                       </div>
                     </div>

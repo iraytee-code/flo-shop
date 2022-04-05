@@ -1,42 +1,48 @@
-import React, { Fragment } from "react";
-import { Modal} from "react-bootstrap";
-import PropTypes from "prop-types"
+import React from 'react';
+import {Modal, Button} from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-const BModal = ({show, handleClose, title, children}) => {
+const BModal = ({  
+    show,
+    handleClose,
+    title,
+    hasFooter,
+    children,
+    ...props
+}) => {
   
   return (
-    <Fragment>
-      <Modal show={show} onHide={handleClose} backdrop="static"
-        keyboard={false}>
+    <div className="modal-dialog modal-dialog-centered">
+        <Modal show={show} onHide={handleClose} {...props}>
         <Modal.Header closeButton>
-          <Modal.Title>
-          <h3 className="">
-            {title}
-          </h3>
-          </Modal.Title>
+          <Modal.Title className="text text-center mb-0 p-0">{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{children}</Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer> */}
+        {hasFooter && (
+          <Modal.Footer>
+            <Button variant="secondary" onClick={null}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={null}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        )}
       </Modal>
-    </Fragment>
-  );
-};
+    </div>
+  )
+}
 
 BModal.defaultProps = {
-    title:"",
-    show:false
+    title: "",
+    show: false
+
 }
 
 BModal.propTypes = {
-    show: PropTypes.bool.isRequired,
-    handleClose: PropTypes.func.isRequired
+    show: PropTypes.bool,
+    handleClose: PropTypes.func,
+    children: PropTypes.node.isRequired,
 }
 
-export default BModal;
+export default BModal

@@ -1,1 +1,1 @@
-export { default as options } from "./SelectData";
+export {default as options} from "./selectGender";

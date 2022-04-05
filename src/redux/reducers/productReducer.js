@@ -4,6 +4,7 @@ const initialState = {
   products: [],
   product: {},
 };
+
 const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case type.GET_PRODUCTS:

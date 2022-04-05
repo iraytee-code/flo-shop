@@ -1,21 +1,20 @@
 import * as type from "../types/userType";
 
 const initialState = {
-  isAuthenticated: false,
-  user: {},
-};
+    isAuthenticated: false,
+    user:{}
+}
 
-const userReducer = (state = initialState, action) => {
-  const { payload, type } = action;
-  switch (type) {
-    case type.GET_USER:
-      return {
-        ...state,
-      };
-
+const userReducer = (state=initialState, action)=>{
+    const{type, payload} = action;
+    switch(type){
+        case type.GET_USER:
+        return{
+            ...state,
+        }
     default:
-      return state;
-  }
-};
+        return state;
+    }
+}
 
-export default userReducer;
+export default userReducer
