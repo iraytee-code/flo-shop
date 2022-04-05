@@ -21,9 +21,10 @@ const Footer = ({ postsPerPage, totalPosts, paginate }) => {
             </a>
           </li>
           <li className="page-item px-2 d-flex">
-            {pageNumbers.map((number) => {
+            {pageNumbers.map((number, index) => {
               return (
                 <a
+                key={index}
                   className="page-link"
                   href="#0"
                   onClick={() => paginate(number)}
