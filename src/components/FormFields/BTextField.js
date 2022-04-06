@@ -10,7 +10,7 @@ const BTextField = ({label,className,controlId, ...props}) => {
     baseClass, 
     className
   )
-  const [field, meta, helpers] = useField(props);
+  const [field, meta] = useField(props);
   return (
     <Form.Group className={allClass} controlId={controlId}>
       <Form.Label>{label}</Form.Label>
