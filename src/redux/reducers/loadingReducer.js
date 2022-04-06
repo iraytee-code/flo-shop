@@ -1,5 +1,5 @@
-import * as type from "../types/categoryType";
-import { LOADING_START, LOADING_END } from "../types/categoryType";
+import * as actionType from "../types/categoryType";
+
 
 const initialState = {
   isLoading: [],
@@ -8,12 +8,12 @@ const initialState = {
 const LoadingReducer = (state = initialState, action) => {
   const {type} = action;
   switch (type) {
-    case type.LOADING_START:
+    case actionType.LOADING_START:
       return {
         ...state,
         isLoading: true,
       };
-    case type.LOADING_END:
+    case actionType.LOADING_END:
       return {
         ...state,
         isLoading: false,

@@ -1,4 +1,4 @@
-import * as type from "../types/userType";
+import * as actionType from "../types/userType";
 
 const initialState = {
     isAuthenticated: false,
@@ -6,9 +6,9 @@ const initialState = {
 }
 
 const userReducer = (state=initialState, action)=>{
-    const{type, payload} = action;
+    const{type} = action;
     switch(type){
-        case type.GET_USER:
+        case actionType.GET_USER:
         return{
             ...state,
         }

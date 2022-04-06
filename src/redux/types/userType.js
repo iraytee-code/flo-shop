@@ -1,7 +1,2 @@
-// export const GET_USERS = "GET_USERS"
-// export const GET_USER = "GET_USER"
-
-const userType = {
-    GET_USERS: "GET_USERS",
-    GET_USER : "GET_USER"
-}
+export const GET_USERS = "GET_PRODUCTS"
+export const GET_USER = "GET_PRODUCT"
