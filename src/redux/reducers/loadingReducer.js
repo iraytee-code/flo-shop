@@ -1,4 +1,4 @@
-import * as actionType from "../types/categoryType";
+import * as actionType from "../types/loadingType";
 
 
 const initialState = {
